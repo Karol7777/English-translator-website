@@ -1,16 +1,16 @@
-<template>
-  <div>
-    <main></main>
-    <footer></footer>
-  </div>
-</template>
-
 <script setup>
-
+definePageMeta({
+  layout: "landing",
+});
 </script>
 
-<style  scoped>
-  h2{
-
-  }
-</style>
+<template>
+  <LandingContainer>
+    <LandingNavbar></LandingNavbar>
+    <LandingHero></LandingHero>
+    <LandingFeatures></LandingFeatures>
+    <LandingLogos></LandingLogos>
+    <LandingFooter></LandingFooter>
+  </LandingContainer>
+</template>
+`
