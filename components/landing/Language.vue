@@ -1,24 +1,17 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { useSelectedLanguage } from '~/composables/useState.js'
 
-const selectedLanguage = useSelectedLanguage()
 
-const menuitems = computed(() => [
-  { title: 'JM', path: '#' },
-  { title: selectedLanguage.value === 'pl' ? 'O mnie' : 'About me', path: '/pricing' },
-  { title: selectedLanguage.value === 'pl' ? 'Oferta' : 'Offer', path: '/about' },
-  { title: selectedLanguage.value === 'pl' ? 'Referencje' : 'References', path: '/about' },
-  { title: selectedLanguage.value === 'pl' ? 'Kontakt' : 'Contact', path: '/contact' },
-])
 
-const open = ref(false)
 </script>
 
 <template>
   <LandingContainer>
-    <header class="flex flex-col lg:flex-row justify-between items-center mb-5">
-      <div class="flex w-full lg:w-auto items-center justify-between">
+    <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+      <div class="flex w-full lg:w-auto items-center justify-between  ">
+        <a href="/" class="text-lg"
+        ><span class="font-bold text-slate-800">Nuxt</span
+        ><span class="text-slate-500">ship</span>
+        </a>
         <div class="block lg:hidden">
           <button @click="open = !open" class="text-gray-800">
             <svg
@@ -48,18 +41,18 @@ const open = ref(false)
           :class="{ block: open, hidden: !open }"
       >
         <ul class="flex flex-col lg:flex-row lg:gap-3">
-          <li v-for="item in menuitems" :key="item.path">
-            <a :href="item.path" class="flex lg:px-3 py-2 text-textgray">
+          <li v-for="item of menuitems">
+            <a
+                :href="item.path"
+                class="flex lg:px-3 py-2 text-textgray"
+            >
               {{ item.title }}
             </a>
           </li>
         </ul>
+
       </nav>
-      <div>
-        <div class="hidden lg:flex items-center gap-4">
-          <LandingLanguageButton />
-        </div>
-      </div>
+
     </header>
   </LandingContainer>
 </template>
